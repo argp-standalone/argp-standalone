@@ -53,7 +53,7 @@ configure_file(input : 'meson_config.h.in',
                output : 'config.h',
                configuration : conf_data)
 
-add_global_arguments('-DHAVE_CONFIG_H=1', language : 'c')
+add_project_arguments('-DHAVE_CONFIG_H=1', language : 'c')
 
 if conf_data.get('HAVE_STRCHRNUL') == 0
 	argp_source += files(['strchrnul.c'])
@@ -74,6 +74,13 @@ argp_library = static_library('argp',
 	dependencies : deps,
 	install : true
 )
+
+argp_dep = declare_dependency(link_with : argp_library,
+	include_directories : '.')
+
+if meson.version().version_compare('>= 0.54.0')
+	meson.override_dependency('argp-standalone', argp_dep)
+endif
 
 e = executable('ex1', 'testsuite/ex1.c', link_with : [argp_library])
 test('ex1', e)
