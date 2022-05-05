@@ -1,5 +1,8 @@
 project('argp-standalone', 'c')
 
+soversion = '0'
+libversion = '0.0.0'
+
 argp_source = files([
 	'argp-ba.c',
 	'argp-eexst.c',
@@ -71,6 +74,8 @@ endif
 argp_library = static_library('argp',
 	argp_source,
 	include_directories : '.',
+	soversion: soversion,
+	version: libversion,
 	dependencies : deps,
 	install : true
 )
