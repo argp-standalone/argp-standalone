@@ -58,16 +58,8 @@ alloca();
 #ifndef _
 /* This is for other GNU distributions with internationalized messages.
    When compiling libc, the _ macro is predefined.  */
-#if defined(HAVE_LIBINTL_H)
-#include <libintl.h>
-#ifdef _LIBC
-#undef dgettext
-#define dgettext(domain, msgid) __dcgettext(domain, msgid, LC_MESSAGES)
-#endif
-#else
 #define dgettext(domain, msgid) (msgid)
 #define gettext(msgid) (msgid)
-#endif
 #endif
 #ifndef N_
 #define N_(msgid) (msgid)

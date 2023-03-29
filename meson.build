@@ -26,7 +26,6 @@ conf_data.set10('HAVE_CONFIG_H', true)
 conf_data.set10('HAVE_ALLOCA_H', cc.check_header('alloca.h'))
 
 conf_data.set('HAVE_UNISTD_H', cc.check_header('unistd.h'))
-conf_data.set('HAVE_LIBINTL_H', cc.check_header('libintl.h'))
 
 # conf_data.set10('_LIBC', true)
 
@@ -46,11 +45,6 @@ conf_data.set10('HAVE_DECL_PROGRAM_INVOCATION_NAME',
 			    cc.has_function('program_invocation_name', prefix : '#include <errno.h>'))
 conf_data.set10('HAVE_DECL_PROGRAM_INVOCATION_SHORT_NAME',
 				cc.has_function('program_invocation_short_name', prefix : '#include <errno.h>'))
-
-deps = []
-if cc.check_header('libintl.h')
-	deps += dependency('intl')
-endif
 
 configure_file(input : 'meson_config.h.in',
                output : 'config.h',
@@ -77,14 +71,12 @@ if host_machine.system() != 'windows'
 		include_directories : '.',
 		soversion: soversion,
 		version: libversion,
-		dependencies : deps,
 		install : true
 	)
 else
 	argp_library = static_library('argp',
 		argp_source,
 		include_directories : '.',
-		dependencies : deps,
 		install : true
 )
 endif

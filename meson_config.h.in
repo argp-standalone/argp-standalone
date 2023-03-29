@@ -6,7 +6,6 @@
 #mesondefine HAVE_CONFIG_H
 #mesondefine HAVE_UNISTD_H
 #mesondefine HAVE_ALLOCA_H
-#mesondefine HAVE_LIBINTL_H
 
 #mesondefine HAVE_ASPRINTF
 #mesondefine HAVE_STRCHRNUL
