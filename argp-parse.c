@@ -44,6 +44,9 @@ alloca();
 #endif
 #endif
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
 #include <stdlib.h>
 #include <string.h>
 #if defined(HAVE_UNISTD_H)
