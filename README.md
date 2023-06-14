@@ -16,6 +16,14 @@ changes from the glibc version in order to make updating easier.
 It is my expectation that this library will be useful to others. Feel free to
 open an issue or make a PR.
 
+# TODO
+
+- Add i686-mingw-w64 build testing to prevent the issue fixed by
+  [#17](https://github.com/argp-standalone/argp-standalone/pull/17) from
+  returning.
+- Port to more OSes and improve the quality of the ports. Currently, we can't
+  get the program name on every system we run on.
+
 ## License
 
 Since this repository is based on GNU C Library source code and changes from
