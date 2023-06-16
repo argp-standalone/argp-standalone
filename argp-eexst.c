@@ -21,7 +21,7 @@
 #include <config.h>
 #endif
 
-#ifdef _WIN32
+#if defined(_WIN32) || defined(MSDOS)
 #define EX_USAGE 64
 #else
 #include <sysexits.h>
