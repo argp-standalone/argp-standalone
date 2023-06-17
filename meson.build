@@ -26,11 +26,10 @@ if host_machine.system() != 'windows'
 endif
 
 conf_data.set10('HAVE_CONFIG_H', true)
+
 conf_data.set10('HAVE_ALLOCA_H', cc.check_header('alloca.h'))
-
 conf_data.set('HAVE_UNISTD_H', cc.check_header('unistd.h'))
-
-# conf_data.set10('_LIBC', true)
+conf_data.set('HAVE_EX_USAGE', cc.has_header_symbol('sysexits.h', 'EX_USAGE'))
 
 conf_data.set10('HAVE_DECL_FLOCKFILE', cc.has_function('flockfile'))
 conf_data.set10('HAVE_DECL_FPUTS_UNLOCKED', cc.has_function('fputs_unlocked', prefix : '#include <stdio.h>'))

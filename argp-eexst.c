@@ -21,10 +21,10 @@
 #include <config.h>
 #endif
 
-#if defined(_WIN32) || defined(MSDOS)
-#define EX_USAGE 64
-#else
+#ifdef HAVE_EX_USAGE
 #include <sysexits.h>
+#else
+#define EX_USAGE 64
 #endif
 
 #include "argp.h"
