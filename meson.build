@@ -1,4 +1,7 @@
-project('argp-standalone', 'c')
+project('argp-standalone', 'c',
+	version : '1.5.0',
+	license : 'LGPL-2.1-or-later',
+)
 
 argp_source = files([
 	'argp-ba.c',
