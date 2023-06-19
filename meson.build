@@ -56,16 +56,16 @@ configure_file(input : 'meson_config.h.in',
 add_project_arguments('-DHAVE_CONFIG_H=1', language : 'c')
 
 if conf_data.get('HAVE_STRCHRNUL') == 0
-	argp_source += files(['strchrnul.c'])
+	argp_source += files(['compat/strchrnul.c'])
 endif
 if conf_data.get('HAVE_STRNDUP') == 0
-	argp_source += files(['strndup.c'])
+	argp_source += files(['compat/strndup.c'])
 endif
 if conf_data.get('HAVE_STRCASECMP') == 0
-	argp_source += files(['strcasecmp.c'])
+	argp_source += files(['compat/strcasecmp.c'])
 endif
 if conf_data.get('HAVE_MEMPCPY') == 0
-	argp_source += files(['mempcpy.c'])
+	argp_source += files(['compat/mempcpy.c'])
 endif
 
 if host_machine.system() != 'windows'
