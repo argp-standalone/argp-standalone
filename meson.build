@@ -99,9 +99,10 @@ pkg.generate(argp_library,
 	description : 'Hierarchial argument parsing library broken out from glibc'
 )
 
-e = executable('ex1', 'testsuite/ex1.c', link_with : [argp_library])
-test('ex1', e)
-e3 = executable('ex3', 'testsuite/ex3.c', link_with : [argp_library])
-# test('ex3', e)
-e4 = executable('ex4', 'testsuite/ex4.c', link_with : [argp_library])
-# test('ex4', e)
+ex1 = executable('ex1', 'testsuite/ex1.c', link_with : [argp_library])
+ex3 = executable('ex3', 'testsuite/ex3.c', link_with : [argp_library])
+ex4 = executable('ex4', 'testsuite/ex4.c', link_with : [argp_library])
+
+test('ex1', ex1)
+test('ex3', ex3, args : ['arg1', 'arg2'])
+test('ex4', ex4, args : ['-v', '--output=FILE', 'arg1_', 'STRING1', 'STRING2', 'STRING3'])
