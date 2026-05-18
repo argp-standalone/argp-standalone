@@ -17,6 +17,14 @@
    License along with the GNU C Library; if not, see
    <https://www.gnu.org/licenses/>.  */
 
+#ifndef ARGP_HIDDEN
+#if defined(__GNUC__) && !defined(_WIN32)
+#define ARGP_HIDDEN __attribute__((visibility("hidden")))
+#else
+#define ARGP_HIDDEN
+#endif
+#endif
+
 #if 1
 /* This code is written for inclusion in gnu-libc, and uses names in the
    namespace reserved for libc.  If we're not compiling in libc, define those
@@ -144,8 +152,12 @@ void*
 mempcpy(void* to, const void* from, size_t size);
 #endif
 
-extern char*
+extern ARGP_HIDDEN char*
 __argp_basename(char* name);
+
+struct argp_state;
+extern ARGP_HIDDEN char*
+__argp_short_program_name(const struct argp_state* state);
 
 #endif /* !_LIBC */
 

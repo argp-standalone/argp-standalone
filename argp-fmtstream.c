@@ -116,7 +116,7 @@ weak_alias (__argp_fmtstream_free, argp_fmtstream_free)
 
 /* Process FS's buffer so that line wrapping is done from POINT_OFFS to the
    end of its buffer.  This code is mostly from glibc stdio/linewrap.c.  */
-void
+ARGP_HIDDEN void
 __argp_fmtstream_update(argp_fmtstream_t fs)
 {
     char *buf, *nl;
@@ -343,7 +343,7 @@ __argp_fmtstream_update(argp_fmtstream_t fs)
 
 /* Ensure that FS has space for AMOUNT more bytes in its buffer, either by
    growing the buffer, or by flushing it.  True is returned iff we succeed. */
-int
+ARGP_HIDDEN int
 __argp_fmtstream_ensure(struct argp_fmtstream* fs, size_t amount)
 {
     if ((size_t) (fs->end - fs->p) < amount)

@@ -91,7 +91,7 @@ alloca();
    for one second intervals, decrementing _ARGP_HANG until it's zero.  Thus
    you can force the program to continue by attaching a debugger and setting
    it to 0 yourself.  */
-volatile int _argp_hang;
+ARGP_HIDDEN volatile int _argp_hang;
 
 #define OPT_PROGNAME -2
 #define OPT_USAGE -3

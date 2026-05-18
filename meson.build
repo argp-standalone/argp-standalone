@@ -1,5 +1,5 @@
 project('argp-standalone', 'c',
-	version : '1.5.0',
+	version : '1.6.0',
 	license : 'LGPL-2.1-or-later',
 	default_options : ['c_std=gnu99'],
 )
@@ -68,6 +68,7 @@ if host_machine.system() != 'windows'
 		argp_source,
 		include_directories : '.',
 		version : meson.project_version(),
+		soversion : 1,
 		install : true
 	)
 else

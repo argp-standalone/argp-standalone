@@ -14,21 +14,22 @@ jobs:
 
     name: Compile and Run Tests
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: install mamba
-        uses: mamba-org/provision-with-micromamba@main
+        uses: mamba-org/setup-micromamba@v3
         with:
+          micromamba-version: 2.6.0-0
           environment-file: .github/meson_build_env.yml
+          init-shell: ${{ runner.os == 'Windows' && 'cmd.exe' || 'bash' }}
       - name: Compile argp
-        shell: bash -l {0}
         if: runner.os != 'Windows'
+        shell: bash -l {0}
         run: |
           meson setup build
           meson test -C build
       - name: Compile argp
-        shell: cmd /C CALL {0}
         if: runner.os == 'Windows'
+        shell: cmd /C CALL {0}
         run: |
-          CALL micromamba activate meson_build_env
           meson setup build
           meson test -C build

@@ -142,13 +142,20 @@ argp_fmtstream_printf(argp_fmtstream_t __fs, const char* __fmt, ...) PRINTF_STYL
 #define __argp_fmtstream_wmargin argp_fmtstream_wmargin
 
 /* Internal routines.  */
-extern void
+#ifndef ARGP_HIDDEN
+#if defined(__GNUC__) && !defined(_WIN32)
+#define ARGP_HIDDEN __attribute__((visibility("hidden")))
+#else
+#define ARGP_HIDDEN
+#endif
+#endif
+extern ARGP_HIDDEN void
 _argp_fmtstream_update(argp_fmtstream_t __fs);
-extern void
+extern ARGP_HIDDEN void
 __argp_fmtstream_update(argp_fmtstream_t __fs);
-extern int
+extern ARGP_HIDDEN int
 _argp_fmtstream_ensure(argp_fmtstream_t __fs, size_t __amount);
-extern int
+extern ARGP_HIDDEN int
 __argp_fmtstream_ensure(argp_fmtstream_t __fs, size_t __amount);
 
 #if 1
