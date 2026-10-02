@@ -27,10 +27,9 @@
 #endif
 
 /* AIX requires this to be the first thing in the file.  */
-#ifndef __GNUC__
-#if HAVE_ALLOCA_H
+#if HAVE_ALLOCA_H || 0
 #include <alloca.h>
-#else
+#elif defined(__GNUC__)
 #ifdef _AIX
 #pragma alloca
 #elif defined(_WIN32)
@@ -39,7 +38,6 @@
 #ifndef alloca /* predefined by HP cc +Olibcalls */
 char*
 alloca();
-#endif
 #endif
 #endif
 #endif

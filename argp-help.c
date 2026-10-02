@@ -26,10 +26,10 @@
 #endif
 
 /* AIX requires this to be the first thing in the file.  */
-#ifndef __GNUC__
 #if HAVE_ALLOCA_H || 0
 #include <alloca.h>
-#elif defined(_WIN32)
+#elif defined(__GNUC__)
+#if defined(_WIN32)
 #define alloca _alloca
 #elif defined(_AIX)
 #pragma alloca
